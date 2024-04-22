@@ -1,6 +1,7 @@
 # Lung-and-Colon-Cancer-Detection
 its a deep learning project , where it can classifies the histopathological images.
 fullcode is my main code to run and test.
+backend.py the backend code.
 3model_lung_and_colon_cancer is my 3 models trainded and testing code.
 run the app.py to open the frontend.
 
