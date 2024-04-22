@@ -1,0 +1,73 @@
+button {
+    padding: 12px 24px; /* Adjust padding to increase button size */
+    font-size: 16px; /* Adjust font size as needed */
+    border: 2px solid #5797d7; /* Set border width and color */
+    background-color: #6993c7; /* Set background color */
+    color: rgb(255, 255, 255); /* Set text color */
+  }
+  
+  button:hover {
+    background-color: #357EC7; /* Change background color on hover */
+  }
+  
+    
+      .overlay-text {
+        position: absolute;
+        top: 26%; 
+        left: 50%;
+        transform: translate(-50%, -50%); 
+        color: rgb(114, 229, 255);
+        
+        font-size: 20px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(1, 1, 0, 1); /* Add text shadow for visibility */
+        display: none;
+        width: -5rem; 
+        height: -9rem;/* Set width to 4 times the size of 1rem */
+        font-weight: bold; /* Make the text bold */ /* Hide overlay text by default */
+        
+        padding: 10px; /* Add padding to create space between text and border */
+        border-radius: 5px; /* Optional: Add border radius for rounded corners */
+      }
+  
+      .image-container:hover .overlay-text {
+        display: block; /* Show overlay text on hover */
+      }
+  
+      /* Add custom CSS for the layout */
+      .main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px; /* Reduce margin top */
+      }
+      .image-container {
+        padding: 1%; /* Reduce padding */
+        text-align: center;
+        margin-top: 10px; /* Reduce margin top */
+      }
+      .upload-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px; /* Reduce margin top */
+      }
+      .prediction-result {
+        margin-top: 10px; /* Reduce margin top */
+        text-align: center; /* Center the prediction results */
+      }
+      body{
+          background-color: pink;
+          margin: 0; /* Remove default body margin */
+          padding: 0; /* Remove default body padding */
+      
+     .text-description {
+        margin-top: -23px; /* Adjust this value to move the text higher */
+     }
+  
+      }
+      /* Fixed size for uploaded image */
+      #previewImage {
+        width: 400px; /* Change this value to set the width */
+        height: auto; /* Automatically adjust height to maintain aspect ratio */
+      }

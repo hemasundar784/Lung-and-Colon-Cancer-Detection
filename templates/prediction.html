@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #6366f1, #8b5cf6);
+            font: 15px/1.5 Arial, Helvetica, sans-serif;
+            text-align: center;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .result-container {
+            margin-top: 20px;
+        }
+        .result-container img {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px; /* Set maximum height for the image */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Predicted Result</h1>
+        <div class="result-container">
+            <img src="{{ image_path }}" alt="Predicted Image">
+
+            <!-- <img src="{{ url_for('static', filename=image_path) }}" alt="Uploaded Image"> -->
+            <p>Predicted Class: {{ predicted_class }}</p>
+            <p>Confidence: {{ confidence_percentage }}%</p>     
+            <p>Cancer Type: {{ cancer_type }}</p>
+        </div>
+        <a href="/">Back to Home Page</a>
+    </div>
+</body>
+</html>
