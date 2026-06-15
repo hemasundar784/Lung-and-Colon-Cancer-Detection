@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cancer Detection</title> 
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+ 
+</head>
+<body style="background: linear-gradient(to bottom right, #6366f1, #8b5cf6); font: 15px/1.5 Arial, Helvetica, sans-serif; text-align: center;">
+  
+  <div class="bg-gradient-to-br from-blue-400 to-purple-500 min-h-screen">
+   <!-- <div class="max-w-lg mx-auto p-8 bg-white rounded-lg shadow-lg text-center main-container"> -->
+      <h1 class="text-3xl font-bold italic mb-4" style="text-decoration: underline double; position: relative;">
+        <span class="background-text" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; ; z-index: -1;"></span>
+        <div style="background: linear-gradient(to right, #007bff, #28a745); 
+            display: inline-block; 
+            color: #151a15; 
+            font-style: bold  ;
+            padding: 10px; 
+            font-family: 'Arial', sans-serif; 
+            font-size: 18px; 
+            font-weight: 900; 
+            border-radius: 10px; 
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
+            text-transform: uppercase;">
+  Lung and Colon Cancers Detection
+</div>
+
+      </h1><br>
+      
+      <p class="text-sm text-gray-500 mb-4 pt-2 text-description">
+        Upload histopathological images to detect lung or colon cancer.
+      </p>
+      <!-- Placeholder for prediction results -->
+      <div id="predictionResults" class="border-dashed border-2 border-gray-300 p-8 mb-4">
+        <!-- Prediction results will be displayed here -->
+      </div>
+      <form id="uploadForm" enctype="multipart/form-data" action="/predict" method="POST">
+        <input type="file" id="fileInput" accept="image/*" style="display: none;" name="file">
+        <div class="upload-container">
+          <div class="image-container">
+            <img src="https://www.saintjohnscancer.org/thoracic/wp-content/uploads/sites/5/2023/08/4-stages-of-lung-cancer-Saint-Johns-Cancer-Institute.png" alt="Left Image" width="500" height="450" style="float: left;">
+            <div id="overlayText" class="overlay-text">Smoking is the number one cause of lung cancer.
+              It causes about <b style="color: rgb(255, 0, 0); font-weight: bold;">90 percent</b> of lung cancer cases.
+              <b style="color: rgb(236, 15, 15); font-weight: bold;">Tobacco smoke contains many chemicals that are known to cause lung cancer.</b>
+              If you still smoke, quitting smoking is the single best thing you can do for your lung health</div> <!-- Add overlay text -->
+          </div>
+          <img src="https://cdnintech.com/media/chapter/59926/1512345123/media/F1.png" alt="cancer Image" id="previewImage" class="ml-4 w-16 h-16 rounded-full" onclick="document.getElementById('fileInput').click();">
+          <div class="image-container">
+            <img src="{{ url_for('static', filename='1.jpeg') }}" alt="Right Image" width="500" height="400">
+            <div id="overlayText" class="overlay-text">Overall, about <b style="color: rgb(255, 0, 0); font-weight: bold;">90% </b>of colorectal cancers are caused by environmental exposures, such as a <b style="color: rgb(228, 78, 19); font-weight: bold;">low-fiber and high-fat diet, alcohol consumption, and tobacco use</b>, which occurred decades before a patient was diagnosed. Researchers recently linked dietary metabolites to a protective or procarcinogenic environment in the colon.</div> <!-- Add overlay text -->
+          </div>
+        </div>
+        <br>
+        <button class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2" type="button" onclick="document.getElementById('fileInput').click();">Upload Image</button>
+        <!-- Submit button to predict -->
+        <button class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  <div class="prediction-result">
+    <!-- Prediction results will be displayed here -->
+  </div>
+  <div style="background: linear-gradient(to bottom right, #63B3ED, #68D391);">
+    <h1 font="font-bold" style="font-family: Arial, Helvetica, sans-serif; text-shadow: 2px 2px 2px rgb(22, 167, 230); padding-right: 0cap; align-items: center;">About the Cancer</h1>
+    <p>Lung and Colon Cancer:</p>
+    <h1 font="font-bold" style="color: #121212; text-shadow: 2px 2px 2px rgba(72, 97, 157, 0.942); align-self: center;">Lung Cancer:</h1>
+    <p>Lung cancer is a type of cancer that begins in the lungs. It is one of the leading causes of cancer-related deaths worldwide. The primary cause of lung cancer is smoking, although non-smokers can also develop the disease due to exposure to secondhand smoke, environmental toxins, or genetic factors. There are two main types of lung cancer: non-small cell lung cancer (NSCLC) and small cell lung cancer (SCLC). Symptoms of lung cancer may include persistent cough, chest pain, shortness of breath, coughing up blood, and fatigue. Diagnosis typically involves imaging tests such as X-rays and CT scans, along with biopsy for confirmation. Treatment options include surgery, chemotherapy, radiation therapy, targeted therapy, and immunotherapy, depending on the stage and type of cancer.</p>
+    <h1 font="font-bold" style="color: #121212; text-shadow: 2px 2px 2px rgba(102, 77, 202, 0.942);">Colon Cancer:</h1>
+    <p>Colon cancer, also known as colorectal cancer, is a type of cancer that begins in the colon or rectum. It is the third most common cancer diagnosed in both men and women globally. The exact cause of colon cancer is unclear, but it is believed to develop from precancerous growths called polyps in the colon or rectum. Risk factors for colon cancer include age, family history, inflammatory bowel disease, a diet high in red and processed meats, obesity, smoking, and lack of physical activity. Symptoms of colon cancer may include changes in bowel habits, rectal bleeding, abdominal discomfort, fatigue, and unexplained weight loss. Screening for colon cancer is essential for early detection, typically done through colonoscopy, sigmoidoscopy, or stool tests. Treatment options for colon cancer include surgery to remove the tumor, chemotherapy, radiation therapy, targeted therapy, and immunotherapy, depending on the stage and extent of the cancer. Both lung and colon cancer can be life-threatening if not detected and treated early. Therefore, awareness of risk factors, regular screenings, and prompt medical attention for symptoms are crucial for improving outcomes and reducing mortality rates associated with these cancers.</p>
+  </div>
+  <div class="footer">
+    <p>Powered by Hemsun</p>
+  </div>
+
+   <script>
+    // JavaScript code to handle file input change
+    document.getElementById('fileInput').addEventListener('change', function(event) {
+      var file = event.target.files[0];
+      if (!file.type.match('image/png') && !file.type.match('image/jpeg')) {
+        alert('Please select a PNG or JPG image file.');
+        document.getElementById('fileInput').value = ''; // Clear the file input
+      } else {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('previewImage').src = e.target.result;
+          // Hide overlay text when an image is uploaded
+          document.querySelectorAll('.overlay-text').forEach(function(element) {
+            element.style.display = 'none';
+          });
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
